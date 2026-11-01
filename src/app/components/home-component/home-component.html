@@ -1,1 +1,84 @@
-<p>home-component works!</p>
+<div class="p-4 sm:p-6 max-w-6xl mx-auto">
+    <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-6">Coches</h1>
+
+    @if (coches && coches.length > 0) {
+    <div class="hidden md:block overflow-x-auto shadow-md rounded-lg border border-gray-200 bg-white">
+        <table class="w-full text-left border-collapse">
+            <thead class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
+                <tr>
+                    <th class="py-3 px-4 font-semibold">ID</th>
+                    <th class="py-3 px-4 font-semibold">Imagen</th>
+                    <th class="py-3 px-4 font-semibold">Marca</th>
+                    <th class="py-3 px-4 font-semibold">Modelo</th>
+                    <th class="py-3 px-4 font-semibold">Conductor</th>
+                    <th class="py-3 px-4 font-semibold">Editar</th>
+                    <th class="py-3 px-4 font-semibold">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 text-sm text-gray-600">
+                @for (coche of coches; track coche.idCoche) {
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="py-3 px-4 font-medium text-gray-900">{{ coche.idCoche }}</td>
+                    <td class="py-3 px-4">
+                        <img [src]="coche.imagen" alt="Foto coche" loading="lazy"
+                            class="w-24 h-16 object-cover rounded-md shadow-sm" />
+                    </td>
+                    <td class="py-3 px-4">{{ coche.marca }}</td>
+                    <td class="py-3 px-4 font-semibold text-gray-800">{{ coche.modelo }}</td>
+                    <td class="py-3 px-4">{{ coche.conductor }}</td>
+                    <td class="py-3 px-4">
+                        <button (click)="updateCoche(coche.idCoche)"
+                            class="px-3 py-1.5 bg-yellow-400 text-gray-900 font-medium rounded-lg shadow-sm hover:bg-yellow-500 transition-colors text-xs">
+                            Editar
+                        </button>
+                    </td>
+                    <td class="py-3 px-4">
+                        <button (click)="deleteCocheAsync(coche.idCoche)"
+                            class="px-3 py-1.5 bg-red-600 text-white font-medium rounded-lg shadow-sm hover:bg-red-700 transition-colors text-xs">
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
+        @for (coche of coches; track coche.idCoche) {
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4 flex flex-col gap-3">
+            <div class="flex gap-4 items-center">
+                <img [src]="coche.imagen" alt="Foto coche" loading="lazy"
+                    class="w-28 h-20 object-cover rounded-md shadow-sm shrink-0" />
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-start gap-2">
+                        <h3 class="font-bold text-gray-900 text-base truncate">{{ coche.marca }} {{ coche.modelo }}</h3>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-medium shrink-0">#{{
+                            coche.idCoche }}</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-1 truncate">
+                        <span class="font-medium text-gray-700">Conductor:</span> {{ coche.conductor }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex gap-2 pt-3 border-t border-gray-100">
+                <button (click)="updateCoche(coche.idCoche)"
+                    class="flex-1 py-2.5 bg-yellow-400 text-gray-900 font-medium rounded-lg shadow-sm hover:bg-yellow-500 active:bg-yellow-600 transition-colors text-sm text-center">
+                    Editar
+                </button>
+                <button (click)="deleteCocheAsync(coche.idCoche)"
+                    class="flex-1 py-2.5 bg-red-600 text-white font-medium rounded-lg shadow-sm hover:bg-red-700 active:bg-red-800 transition-colors text-sm text-center">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+        }
+    </div>
+    } @else {
+    <div class="p-4 bg-yellow-50 border-l-4 border-yellow-400 text-yellow-700 rounded-r-md">
+        <p>No hay coches disponibles en este momento.</p>
+    </div>
+    }
+</div>
+<br />

@@ -8,6 +8,9 @@ import { HomeComponent } from './components/home-component/home-component';
 import { CreateCocheComponent } from './components/create-coche-component/create-coche-component';
 import { UpdateCocheComponent } from './components/update-coche-component/update-coche-component';
 import { DeleteCocheComponent } from './components/delete-coche-component/delete-coche-component';
+import { LoginComponent } from './components/login-component/login-component';
+import { CocheService } from './services/coche.service';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,14 +19,17 @@ import { DeleteCocheComponent } from './components/delete-coche-component/delete
     HomeComponent,
     CreateCocheComponent,
     UpdateCocheComponent,
-    DeleteCocheComponent
+    DeleteCocheComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
+    CocheService,
   ],
   bootstrap: [App]
 })

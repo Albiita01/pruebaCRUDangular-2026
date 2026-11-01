@@ -1,1 +1,18 @@
-<p>menu-component works!</p>
+<nav class="w-full border-b border-gray-200 bg-white">
+    <div class="max-w-screen-xl flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0 mx-auto p-4">
+        <a routerLink="/" class="text-xl font-semibold whitespace-nowrap">Coches</a>
+        <ul
+            class="flex w-full sm:w-auto justify-around sm:justify-start gap-2 sm:gap-8 font-medium text-sm sm:text-base">
+            <li>
+                <a routerLink="/" routerLinkActive="text-blue-600" [routerLinkActiveOptions]="{ exact: true }"
+                    class="hover:text-blue-600">Home</a>
+            </li>
+            <li>
+                <a routerLink="/create" routerLinkActive="text-blue-600" class="hover:text-blue-600">Create</a>
+            </li>
+            <li>
+                <a routerLink="/login" routerLinkActive="text-blue-600" class="hover:text-blue-600">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
