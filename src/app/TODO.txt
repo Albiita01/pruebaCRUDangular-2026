@@ -1,10 +1,10 @@
 | EXAMEN ANGULAR
 
-x Menú de rutas
-x CRUD
+- Menú de rutas
+- CRUD
 x Autorización
 x Subida de archivos
-x Tailwind
+- Tailwind
 
 
 | COCHES:
@@ -12,21 +12,24 @@ x Tailwind
 ! Menú
 ! CRUD:
 ! getCoches
-    ? getCocheById
-    ? createCoche (la imagen que se suba como archivo)
-    ? updateCocheById
-    ? deleteCocheById
+    - getCocheById
+    - getAllCoches
+    - createCoche
+    - updateCocheById
+    - deleteCocheById
+    - deleteCocheConfirm
+    ? Que en el createCoche la imagen se suba como archivo y se vea
     // La imagen de createCoche que se suba como archivo
 ! Autorización:
 ! Login
 ! Sin login, no accede a updateCoche ni a deleteCoche
 
 ~ COMPONENTES:
-x Menú
-x Home (salen todos los coches)
-x Create
-x Update
-x Delete
+- Menú
+- Home (salen todos los coches)
+- Create
+- Update
+- Delete
 x Login
 
 ~ SERVICIOS: 
@@ -36,4 +39,4 @@ x CocheService
 - Coche
 
 ~ ENVIRONMENTS:
-x Environment
+- Environment

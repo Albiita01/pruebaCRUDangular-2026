@@ -2,6 +2,7 @@
     <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-6">Coches</h1>
 
     @if (coches && coches.length > 0) {
+    <!-- Vista de Tabla (Escritorio / Tablets grandes) -->
     <div class="hidden md:block overflow-x-auto shadow-md rounded-lg border border-gray-200 bg-white">
         <table class="w-full text-left border-collapse">
             <thead class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
@@ -12,6 +13,7 @@
                     <th class="py-3 px-4 font-semibold">Modelo</th>
                     <th class="py-3 px-4 font-semibold">Conductor</th>
                     <th class="py-3 px-4 font-semibold">Editar</th>
+                    <th class="py-3 px-4 font-semibold">Borrar</th>
                     <th class="py-3 px-4 font-semibold">Eliminar</th>
                 </tr>
             </thead>
@@ -33,6 +35,12 @@
                         </button>
                     </td>
                     <td class="py-3 px-4">
+                        <button (click)="deleteCocheConfirmAsync(coche.idCoche)"
+                            class="px-3 py-1.5 bg-orange-500 text-white font-medium rounded-lg shadow-sm hover:bg-red-700 transition-colors text-xs">
+                            Borrar
+                        </button>
+                    </td>
+                    <td class="py-3 px-4">
                         <button (click)="deleteCocheAsync(coche.idCoche)"
                             class="px-3 py-1.5 bg-red-600 text-white font-medium rounded-lg shadow-sm hover:bg-red-700 transition-colors text-xs">
                             Eliminar
@@ -44,6 +52,7 @@
         </table>
     </div>
 
+    <!-- Vista de Tarjetas (Móvil) -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
         @for (coche of coches; track coche.idCoche) {
         <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4 flex flex-col gap-3">
@@ -62,13 +71,18 @@
                 </div>
             </div>
 
+            <!-- Botones de Acción adaptados para móvil -->
             <div class="flex gap-2 pt-3 border-t border-gray-100">
                 <button (click)="updateCoche(coche.idCoche)"
-                    class="flex-1 py-2.5 bg-yellow-400 text-gray-900 font-medium rounded-lg shadow-sm hover:bg-yellow-500 active:bg-yellow-600 transition-colors text-sm text-center">
+                    class="flex-1 py-2 bg-yellow-400 text-gray-900 font-medium rounded-lg shadow-sm hover:bg-yellow-500 active:bg-yellow-600 transition-colors text-xs text-center">
                     Editar
                 </button>
+                <button (click)="deleteCocheConfirmAsync(coche.idCoche)"
+                    class="flex-1 py-2 bg-orange-500 text-white font-medium rounded-lg shadow-sm hover:bg-red-700 active:bg-red-800 transition-colors text-xs text-center">
+                    Borrar
+                </button>
                 <button (click)="deleteCocheAsync(coche.idCoche)"
-                    class="flex-1 py-2.5 bg-red-600 text-white font-medium rounded-lg shadow-sm hover:bg-red-700 active:bg-red-800 transition-colors text-sm text-center">
+                    class="flex-1 py-2 bg-red-600 text-white font-medium rounded-lg shadow-sm hover:bg-red-700 active:bg-red-800 transition-colors text-xs text-center">
                     Eliminar
                 </button>
             </div>

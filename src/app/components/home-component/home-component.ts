@@ -32,6 +32,10 @@ export class HomeComponent implements OnInit {
     await this.loadCochesAsync();
   }
 
+  async deleteCocheConfirmAsync(idCoche: number): Promise<void> {
+    this._router.navigate(["/delete", idCoche]);
+  }
+
   async ngOnInit(): Promise<void> {
     await this.loadCochesAsync();
 
