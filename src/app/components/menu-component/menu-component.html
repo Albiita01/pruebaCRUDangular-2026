@@ -1,8 +1,10 @@
 <nav class="w-full border-b border-gray-200 bg-white">
     <div class="max-w-screen-xl flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0 mx-auto p-4">
         <a routerLink="/" class="text-xl font-semibold whitespace-nowrap">Coches</a>
+
+        <!-- Añadimos 'items-center' aquí para alinear verticalmente todos los elementos del menú -->
         <ul
-            class="flex w-full sm:w-auto justify-around sm:justify-start gap-2 sm:gap-8 font-medium text-sm sm:text-base">
+            class="flex items-center w-full sm:w-auto justify-around sm:justify-start gap-2 sm:gap-8 font-medium text-sm sm:text-base">
             <li>
                 <a routerLink="/" routerLinkActive="text-blue-600" [routerLinkActiveOptions]="{ exact: true }"
                     class="hover:text-blue-600">Home</a>
@@ -10,9 +12,22 @@
             <li>
                 <a routerLink="/create" routerLinkActive="text-blue-600" class="hover:text-blue-600">Create</a>
             </li>
+            @if (usuario(); as user) {
             <li>
-                <a routerLink="/login" routerLinkActive="text-blue-600" class="hover:text-blue-600">Login</a>
+                <p style="color: skyblue;">{{user.userName}}</p>
             </li>
+            <li>
+                <button type="button" (click)="logout()"
+                    class="px-4 py-2 bg-red-600 text-white font-medium text-sm rounded-lg shadow-sm hover:bg-red-700 active:bg-blue-800 transition-colors inline-block text-center">Logout</button>
+            </li>
+            } @else {
+            <li>
+                <a routerLink="/login" routerLinkActive="bg-blue-800"
+                    class="px-4 py-2 bg-blue-600 text-white font-medium text-sm rounded-lg shadow-sm hover:bg-blue-700 active:bg-blue-800 transition-colors inline-block text-center">
+                    Login
+                </a>
+            </li>
+            }
         </ul>
     </div>
 </nav>

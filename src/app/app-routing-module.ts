@@ -5,14 +5,15 @@ import { CreateCocheComponent } from './components/create-coche-component/create
 import { UpdateCocheComponent } from './components/update-coche-component/update-coche-component';
 import { DeleteCocheComponent } from './components/delete-coche-component/delete-coche-component';
 import { LoginComponent } from './components/login-component/login-component';
+import { AuthGuard } from './guards/auth-guard';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "create", component: CreateCocheComponent },
-  { path: "update", component: UpdateCocheComponent },
-  { path: "update/:id", component: UpdateCocheComponent },
-  { path: "delete", component: DeleteCocheComponent },
-  { path: "delete/:id", component: DeleteCocheComponent },
+  { path: "create", component: CreateCocheComponent, canActivate: [AuthGuard] },
+  { path: "update", component: UpdateCocheComponent, canActivate: [AuthGuard] },
+  { path: "update/:id", component: UpdateCocheComponent, canActivate: [AuthGuard] },
+  { path: "delete", component: DeleteCocheComponent, canActivate: [AuthGuard] },
+  { path: "delete/:id", component: DeleteCocheComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent },
 ];
 

@@ -2,6 +2,7 @@
 
 - Menú de rutas
 - CRUD
+x Autorización
 x Subida de archivos
 - Tailwind
 
@@ -29,9 +30,10 @@ x Subida de archivos
 - Create
 - Update
 - Delete
+x Login
 
 ~ SERVICIOS: 
-- CocheService
+x CocheService
 
 ~ MODELOS:
 - Coche

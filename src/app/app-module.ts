@@ -11,6 +11,8 @@ import { DeleteCocheComponent } from './components/delete-coche-component/delete
 import { LoginComponent } from './components/login-component/login-component';
 import { CocheService } from './services/coche.service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth-guard';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { FormsModule, NgForm } from '@angular/forms';
   providers: [
     provideBrowserGlobalErrorListeners(),
     CocheService,
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [App]
 })

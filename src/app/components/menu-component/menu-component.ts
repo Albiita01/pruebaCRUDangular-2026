@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-menu-component',
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class MenuComponent {
 
+  private _service: AuthService = inject(AuthService);
+  public usuario = this._service.user;
+
+  logout(): void {
+    this._service.logout();
+  }
 }
